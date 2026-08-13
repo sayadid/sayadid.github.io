@@ -89,6 +89,7 @@
 }
 :root {
   --hairline: #e8e6dc;
+  --hairline-strong: #d8d5c8;
   --content-width: 720px;
   --sidebar-width: 220px;
   --hl-keyword: #ad5f3c;
@@ -101,6 +102,7 @@
 }
 :root.dark {
   --hairline: #3e3d3a;
+  --hairline-strong: #4a4945;
   --hl-keyword: #e08b6d;
   --hl-string: #9db884;
   --hl-comment: #6e6b64;
@@ -225,14 +227,14 @@ main.container {
   bottom: 0;
   z-index: 100;
   width: var(--sidebar-width);
-  border-right: 1px solid var(--hairline);
+  border-right: 2px solid var(--hairline-strong);
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 .site-sidebar-inner {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 28px 16px 24px;
+  padding: 28px 16px 20px;
   overflow-y: auto;
 }
 .site-title {
@@ -263,27 +265,39 @@ main.container {
   color: var(--theme-color);
   background: var(--body-color-5);
 }
-#theme-toggle {
+.sidebar-bottom {
   margin-top: auto;
-  align-self: flex-start;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.sidebar-social,
+#theme-toggle {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  margin-left: 6px;
-  border: none;
+  width: 32px;
+  height: 32px;
   border-radius: 8px;
-  background: transparent;
   color: var(--body-color);
   font-size: 15px;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: color 0.15s ease, background-color 0.15s ease;
 }
+.sidebar-social:hover,
+#theme-toggle:hover {
+  color: var(--primary);
+  background: var(--body-color-5);
+}
+#theme-toggle {
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
 #theme-toggle:hover {
   color: var(--theme-color);
-  background: var(--body-color-5);
 }
 #theme-toggle .fa-sun {
   display: none;
@@ -301,7 +315,7 @@ main.container {
     bottom: auto;
     width: 100%;
     border-right: 0;
-    border-bottom: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline-strong);
     background: var(--theme-bg-color-80);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
@@ -322,12 +336,13 @@ main.container {
     font-size: 17px;
     white-space: nowrap;
   }
-  #theme-toggle {
+  .sidebar-bottom {
     order: 1;
     margin-top: 0;
+    padding-top: 0;
+  }
+  #theme-toggle {
     margin-left: 0;
-    width: 32px;
-    height: 32px;
   }
   .site-nav {
     order: 2;
@@ -883,19 +898,6 @@ figure.highlight:hover .code-copy {
   text-align: center;
   font-size: 13px;
   color: var(--body-color);
-}
-.site-footer .footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin-bottom: 14px;
-  font-size: 17px;
-}
-.site-footer .footer-social a {
-  color: var(--body-color);
-}
-.site-footer .footer-social a:hover {
-  color: var(--primary);
 }
 .site-footer .footer-copy {
   margin: 0;
